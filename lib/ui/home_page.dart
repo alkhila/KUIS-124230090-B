@@ -66,7 +66,14 @@ class HomePage extends StatelessWidget {
   Widget _gameModel(context, int index) {
     return InkWell(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context)));
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return DetailPage(index: index, game: GameModel.gameList[index]);
+            },
+          ),
+        );
       },
       child: Container(
         padding: EdgeInsets.all(8),
@@ -76,17 +83,33 @@ class HomePage extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
+                topLeft: Radius.circular(14),
+                topRight: Radius.circular(14),
               ),
-              child: Image.asset(GameModel.gameList[index].gameImg),
+              child: Image.asset(
+                GameModel.gameList[index].gameImg,
+                width: double.infinity,
+                height: 200,
+                fit: BoxFit.cover,
+              ),
             ),
+            const SizedBox(height: 20),
             Text(GameModel.gameList[index].gameName),
+            const SizedBox(height: 10),
             Text(GameModel.gameList[index].gamePublisher),
+            const SizedBox(height: 10),
             Text(GameModel.gameList[index].gameDesc),
+            const SizedBox(height: 10),
+            Row(
+              children: [
+                IconButton(onPressed: () {}, icon: Icon(Icons.thumb_up)),
+                Text('${GameModel.gameList[index].totalLike} Likes'),
+              ],
+            ),
           ],
         ),
       ),
