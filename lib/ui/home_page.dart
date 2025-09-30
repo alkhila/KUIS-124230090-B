@@ -41,6 +41,16 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
+            TextFormField(
+              decoration: InputDecoration(
+                hintText: 'Search Game',
+                labelText: 'Search Game',
+                contentPadding: EdgeInsets.symmetric(horizontal: 10.5),
+                enabledBorder: OutlineInputBorder(borderSide: BorderSide()),
+                focusedBorder: OutlineInputBorder(borderSide: BorderSide()),
+                prefixIcon: const Icon(Icons.search),
+              ),
+            ),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(20),
